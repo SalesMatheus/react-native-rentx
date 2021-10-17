@@ -4,6 +4,8 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 import Logo from '../../assets/logo.svg';
 
+import { Car } from '../../components/Car';
+
 import {
     Container,
     Header,
@@ -12,6 +14,16 @@ import {
 } from './styles';
 
 export function Home() {
+    const carData ={
+    brand: 'Audi',
+    name: 'RS 5 Coupé',
+    rent: {
+        period: 'Ao dia',
+        price: 120,
+    },
+    thumbnail: 'https://pngimg.com/uploads/audi/audi_PNG99482.png',
+        
+    }
   return (
     <Container>
         <StatusBar 
@@ -30,6 +42,14 @@ export function Home() {
                 </TotalCars>
             </HeaderContent>
         </Header>
+
+        <Car data={carData}/>
+        <Car data={carData}/>
+        <Car data={carData}/>
+        <Car data={carData}/>
+        <Car data={carData}/>
+        <Car data={carData}/>
+        <Car data={carData}/>
     </Container>
   );
 }
