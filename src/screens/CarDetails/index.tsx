@@ -1,9 +1,12 @@
 import React from 'react';
+
 import { BackButton } from '../../components/BackButton';
+import { ImageSlider } from '../../components/ImageSlider';
 
 import {
   Container,
-  Header
+  Header,
+  CarImage
 } from './styles';
 
 export function CarDetails() {
@@ -11,8 +14,11 @@ export function CarDetails() {
         <Container>
             <Header>
                 <BackButton onPress={() => {}}/>
-
             </Header>
+
+            <CarImage>
+                <ImageSlider imagesUrl={['https://pngimg.com/uploads/audi/audi_PNG99482.png']}/>
+            </CarImage>
         </Container>
     );
 }
