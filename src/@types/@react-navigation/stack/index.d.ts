@@ -13,5 +13,6 @@ declare namespace ReactNavigation {
         Scheduling: CarDTO;
         SchedulingDetails: SchelingDT;
         SchedulingComplete: undefined;
+        MyCars: undefined;
     }
 }
