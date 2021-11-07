@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img height="50" src=".github/logo.svg" alt="rentx" />
+    <img height="40" src=".github/logo.svg" alt="rentx" />
 </h1>
 
 ![cover](.github/capa.png?style=flat)
