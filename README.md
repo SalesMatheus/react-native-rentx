@@ -12,7 +12,7 @@
 - [TypeScript](https://www.typescriptlang.org/)
 - [Expo](https://expo.io/)
 - [Styled Components](https://styled-components.com/)
-- [React Native Calendars](https://github.com/wix/react-native-calendars
+- [React Native Calendars](https://github.com/wix/react-native-calendars)
 - [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
 - [React Navigation](https://reactnavigation.org/)
 - [Lottie](https://lottiefiles.com/)
