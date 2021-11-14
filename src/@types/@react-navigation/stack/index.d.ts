@@ -6,7 +6,13 @@ declare namespace ReactNavigation {
         car: CarDTO;
         dates: string[];
     }
-
+    interface UserData {
+        user: {
+            name: string;
+            email: string;
+            cnh: string;
+        }
+    }
     export interface RootParamList {
         Home: undefined;
         CarDetails: CarDTO;
@@ -15,6 +21,6 @@ declare namespace ReactNavigation {
         SchedulingComplete: undefined;
         MyCars: undefined;
         SignUpFistStep: undefined;
-        SignUpSecondStep: undefined;
+        SignUpSecondStep: UserData;
     }
 }

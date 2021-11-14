@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { 
     StatusBar,
@@ -7,6 +7,7 @@ import {
     Keyboard,
     Alert
 } from 'react-native';
+import * as Yup from 'yup';
 
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
@@ -24,14 +25,42 @@ import {
 } from './styles';
 
 export function SignUpFistStep() {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [cnh, setCnh] = useState('');
+
     const navigation = useNavigation();
 
     function handleBack(){
         navigation.goBack();
     };
 
-    function handleNextStep(){
-        navigation.navigate('SignUpSecondStep');
+    async function handleNextStep(){
+        try {
+            const schema = Yup.object().shape({
+                name: Yup.string()
+                    .required('Nome é obrigatório'),
+                email: Yup.string()
+                    .required('E-mail é obrigatório')
+                    .email('Digite um e-mail válido'),
+                cnh: Yup.string()
+                    .required('CNH é obrigatória')
+            });
+        
+            const data = { name, email, cnh };
+            await schema.validate(data);
+
+            navigation.navigate('SignUpSecondStep', { user: data });
+        } catch (error) {
+            if(error instanceof Yup.ValidationError){
+                Alert.alert('Opa', error.message);
+            }else{
+                Alert.alert(
+                    'Erro no cadastro', 
+                    'Ocorreu um erro ao realizar o cadastro, verifique suas informações.'
+                );
+            }
+        }
     };
 
     return (
@@ -63,16 +92,25 @@ export function SignUpFistStep() {
                         <Input 
                             iconName="user"
                             placeholder="Nome"
+                            autoCorrect={false}
+                            onChangeText={setName}
+                            value={name}
                         />
                         <Input 
                             iconName="mail"
                             placeholder="E-mail"
                             keyboardType="email-address"
+                            autoCorrect={false}
+                            autoCapitalize="none"
+                            onChangeText={setEmail}
+                            value={email}
                         />
                         <Input 
                             iconName="credit-card"
                             placeholder="CNH"
                             keyboardType="numeric"
+                            onChangeText={setCnh}
+                            value={cnh}
                         />
                     </Form>
                     
