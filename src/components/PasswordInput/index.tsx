@@ -12,33 +12,48 @@ import {
 
 interface Props extends TextInputProps {
     iconName: React.ComponentProps<typeof Feather>['name'];
+    value?: string;
 }
 
-export function PasswordInput({ iconName, ...rest }: Props) {
+export function PasswordInput({ iconName, value, ...rest }: Props) {
     const [passwordVisibled, setPasswordVisibled] = useState(true);
-
+    const [isFocused, setIsFocused] = useState(false);
+    const [isFilled, setIsFilled] = useState(false);
+  
     const theme = useTheme();
+  
+    function handleInputFocus(){
+      setIsFocused(true);
+    }
+  
+    function handleInputBlur(){
+      setIsFocused(false);
+      setIsFilled(!!value)
+    }
 
     function handlePasswordVisibilityChange() {
-        setPasswordVisibled(prevState => !prevState)
+        setPasswordVisibled(prevState => !prevState);
     }
 
     return (
         <Container>
-            <IconContainer>
+            <IconContainer isFocused={isFocused}>
                 <Feather
                     name={iconName}
                     size={24}
-                    color={theme.colors.text_details}
+                    color={(isFocused || isFilled) ? theme.colors.main : theme.colors.text_details}
                 />
             </IconContainer>
             <InputText  
                 {...rest}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
                 secureTextEntry={passwordVisibled}
+                isFocused={isFocused}
             />
 
             <BorderlessButton onPress={handlePasswordVisibilityChange}>
-                <IconContainer>
+                <IconContainer isFocused={isFocused}>
                     <Feather
                         name={!passwordVisibled ? "eye" : 'eye-off'}
                         size={24}
