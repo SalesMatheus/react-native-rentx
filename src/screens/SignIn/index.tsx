@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native'
 import { 
     StatusBar,
     KeyboardAvoidingView,
@@ -27,6 +28,7 @@ export function SignIn() {
     const [password, setPassword] = useState('');
 
     const theme = useTheme();
+    const navigation = useNavigation();
 
     async function handlerSignIn(){
         try {
@@ -50,6 +52,10 @@ export function SignIn() {
                 );
             }
         }
+    }
+
+    function handleNewAcount() {
+        navigation.navigate('SignUpFistStep');
     }
 
     return (
@@ -102,7 +108,7 @@ export function SignIn() {
                             title="Criar conta gratuita"
                             color={theme.colors.background_secondary}
                             light={true}
-                            onPress={() => {}}
+                            onPress={handleNewAcount}
                             enabled={true}
                             loading={false}
                         />
