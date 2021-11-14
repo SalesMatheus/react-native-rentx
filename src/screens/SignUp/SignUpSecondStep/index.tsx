@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useTheme } from 'styled-components';
 
+import { Confirmation } from '../../Confirmation';
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
 import { PasswordInput } from '../../../components/PasswordInput';
@@ -51,6 +52,12 @@ export function SignUpSecondStep() {
         if(password !== confirmPassword){
             return Alert.alert('A senha e a confirmaçào devem ser iguais.');
         }
+
+        navigation.navigate('Confirmation', {
+            nextScreenRoute: 'SignIn',
+            title: 'Conta criada',
+            message: `Agora é só fazer login \n e aproveitar.`,
+        })
     }
 
     return (

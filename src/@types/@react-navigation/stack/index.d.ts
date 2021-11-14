@@ -13,12 +13,17 @@ declare namespace ReactNavigation {
             cnh: string;
         }
     }
+    interface PageConfirm {
+        title: string;
+        message: string;
+        nextScreenRoute: string;
+    }
     export interface RootParamList {
         Home: undefined;
         CarDetails: CarDTO;
         Scheduling: CarDTO;
         SchedulingDetails: SchelingDT;
-        SchedulingComplete: undefined;
+        Confirmation: PageConfirm;
         MyCars: undefined;
         SignUpFistStep: undefined;
         SignUpSecondStep: UserData;
