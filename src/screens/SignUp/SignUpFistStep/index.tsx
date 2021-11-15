@@ -8,6 +8,7 @@ import {
     Alert
 } from 'react-native';
 import * as Yup from 'yup';
+import { useAuth } from '../../../hooks/auth';
 
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
@@ -30,6 +31,7 @@ export function SignUpFistStep() {
     const [cnh, setCnh] = useState('');
 
     const navigation = useNavigation();
+    const { user } = useAuth();
 
     function handleBack(){
         navigation.goBack();
