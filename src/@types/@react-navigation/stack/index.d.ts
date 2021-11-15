@@ -25,6 +25,7 @@ declare namespace ReactNavigation {
         SchedulingDetails: SchelingDT;
         Confirmation: PageConfirm;
         MyCars: undefined;
+        SignIn: undefined;
         SignUpFistStep: undefined;
         SignUpSecondStep: UserData;
     }
